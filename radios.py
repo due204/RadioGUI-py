@@ -1,0 +1,1 @@
+radio = {'Anime Nexus': 'http://radio.animenexus.mx:8000/animenexus', 'Vale 97.1': 'http://vale.stweb.tv:1935/vale/live/playlist.m3u8'}
