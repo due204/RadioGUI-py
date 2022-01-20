@@ -1,4 +1,6 @@
-from tkinter import Button, Tk, Frame, Label
+#!/usr/bin/python3.7
+
+from tkinter import Button, Tk, Frame, Label, PhotoImage
 from tkinter import Entry, StringVar, Scale, IntVar, messagebox
 from tkinter.ttk import Combobox
 import vlc
@@ -17,6 +19,7 @@ class Radio(Frame):
     def vista(self):
         # Vista principal
         self.parent.title("RadioGUI-py")
+        self.parent.iconphoto(True, PhotoImage(file="icono.png"))
         vent_x = self.parent.winfo_screenwidth() // 2 - 200 // 2
         vent_y = self.parent.winfo_screenheight() // 2 - 150 // 2
         tam_y_pos = "200x" + "150+" + str(vent_x) + "+" + str(vent_y)
@@ -50,7 +53,7 @@ class Radio(Frame):
             orient="horizontal",
             length=170,
             showvalue=0,
-            label="Volumen",
+            label="Volumen: 0",
         )
         self.vol_cont.place(x=10, y=60)
 
@@ -96,7 +99,7 @@ class Radio(Frame):
             self.frame2 = Frame(self.parent, height=200, width=200)
             self.frame2.place(x=0, y=0)
 
-            self.label1 = Label(self.frame2, text="Nombre de la radio")
+            self.label1 = Label(self.frame2, text="Nombre de la radio:")
             self.label1.place(x=0, y=0)
 
             self.r_selecionada = Combobox(
@@ -107,7 +110,7 @@ class Radio(Frame):
             )
             self.r_selecionada.place(x=0, y=25)
 
-            self.label2 = Label(self.frame2, text="Link de la radio")
+            self.label2 = Label(self.frame2, text="Link de la radio:")
             self.label2.place(x=0, y=50)
 
             self.l_selecionada = Entry(
@@ -134,6 +137,7 @@ class Radio(Frame):
             self.nombre.trace("w", obtener)
 
     def guardar_r(self):
+        # Actualiza o guarda una entrada nueva en el dicionario
         if self.nombre.get() and self.link.get():
             # Actualiza el dicionario
             if self.nombre.get() in self.radios_():
@@ -189,9 +193,10 @@ class Radio(Frame):
         return radio_lista
 
     def volumen(self, *args):
+        # Configura el volumen
         vol = min(self.vol_var.get(), 100)
-        v_m = "%d%s" % (vol, " (Muted)" if self.vol_muted else "")
-        self.vol_cont.config(label="Volumen " + v_m)
+        v_m = "%d%s" % (vol, " Mute" if self.vol_muted else "")
+        self.vol_cont.config(label="Volumen: " + v_m)
         self.player.audio_set_volume(vol)
 
     def salir(self):
