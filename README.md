@@ -7,3 +7,7 @@ RadioGUI fue una de las aplicaciones que use durante muchas años siendo un fan 
 
 Escrita en python3 y utilizando de fondo las librerías del fantástico reproductor VLC lo trate de hacer lo mas simple y minimalista posible y creo que 
 llegue al resultado esperado.
+
+
+
+![RadioGUI-py](https://raw.githubusercontent.com/due204/RadioGUI-py/main/RadioGUI-py_screenshot.png)
