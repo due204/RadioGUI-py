@@ -25,6 +25,7 @@ class Radio(Frame):
         tam_y_pos = "200x" + "150+" + str(vent_x) + "+" + str(vent_y)
         self.parent.geometry(tam_y_pos)  # Ancho, largo y posicion
         self.parent.resizable(False, False)
+        self.parent.bind("<KeyPress-Escape>", self.salir)
         self.play1 = True
 
         # Frame 1
