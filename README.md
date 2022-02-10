@@ -9,6 +9,8 @@ llegue al resultado esperado.
 
 Lo único que necesitamos para hacer funcionar correctamente es tener instalado el [VLC](https://www.videolan.org/vlc/index.es.html) en nuestro sistema.
 
+Para obtener los link de las radios utilice el siguiente tutorial que me funciono muy bien, aclaro que no es mio pero fue el que mejor me funciono. [Link al tutorial](https://geekland.eu/obtener-la-url-para-escuchar-radio-en-streaming/)
+
 
 
 ![RadioGUI-py](https://raw.githubusercontent.com/due204/RadioGUI-py/main/RadioGUI-py_screenshot.png)
