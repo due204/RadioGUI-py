@@ -1,31 +1,40 @@
-#!/usr/bin/python3.7
+#!/usr/bin/python3.9
 
-from tkinter import Button, Tk, Frame, Label, PhotoImage
-from tkinter import Entry, StringVar, Scale, IntVar, messagebox
+from tkinter import Button
+from tkinter import Tk
+from tkinter import Frame
+from tkinter import Label
+from tkinter import PhotoImage
+from tkinter import Entry
+from tkinter import StringVar
+from tkinter import Scale
+from tkinter import IntVar
+from tkinter import messagebox
 from tkinter.ttk import Combobox
 import vlc
 import radios
+
 
 
 class Radio(Frame):
     def __init__(self, parent):
         Frame.__init__(self, parent)
         self.parent = parent
-        self.parent.protocol("WM_DELETE_WINDOW", self.salir)
-        self.instance = vlc.Instance()
+        self.parent.protocol("WM_DELETE_WINDOW", self.salir) #  Que hacer al cerrar la ventana
+        self.instance = vlc.Instance() #  Instancia el vlc
         self.player = self.instance.media_player_new()
-        self.vista()
+        self.vista() 
 
     def vista(self):
         # Vista principal
-        self.parent.title("RadioGUI-py")
-        self.parent.iconphoto(True, PhotoImage(file="icono.png"))
-        vent_x = self.parent.winfo_screenwidth() // 2 - 200 // 2
-        vent_y = self.parent.winfo_screenheight() // 2 - 150 // 2
-        tam_y_pos = "200x" + "150+" + str(vent_x) + "+" + str(vent_y)
+        self.parent.title("RadioGUI-py") #  Titulo ventana
+        self.parent.iconphoto(True, PhotoImage(file="icono.png")) # Icono
+        vent_x = self.parent.winfo_screenwidth() // 2 - 200 // 2 # Tamaño
+        vent_y = self.parent.winfo_screenheight() // 2 - 150 // 2 # Tamaño
+        tam_y_pos = "200x" + "150+" + str(vent_x) + "+" + str(vent_y) # Posicion
         self.parent.geometry(tam_y_pos)  # Ancho, largo y posicion
-        self.parent.resizable(False, False)
-        self.parent.bind("<KeyPress-Escape>", self.salir)
+        self.parent.resizable(False, False) # Redimensionable en ancho y largo, no
+        self.parent.bind("<KeyPress-Escape>", self.salir) # Cerrar la ventana al precionar ESC
         self.play1 = True
 
         # Frame 1
@@ -35,6 +44,7 @@ class Radio(Frame):
         self.label1 = Label(self.frame1, text="Elija su radio")
         self.label1.place(x=50, y=0)
 
+        # Lista radios
         self.radio_selecionada = Combobox(
             self.frame1,
             width=20,
@@ -42,9 +52,11 @@ class Radio(Frame):
             values=(self.radios_()),
         )
         self.radio_selecionada.place(x=10, y=40)
-
-        self.vol_muted = False
-        self.vol_var = IntVar()
+        
+        self.vol_muted = False # No muted
+        self.vol_var = IntVar() 
+        self.vol_var.set(100) # Set vol inicial
+        # Volumen
         self.vol_cont = Scale(
             self.frame1,
             variable=self.vol_var,
@@ -54,17 +66,19 @@ class Radio(Frame):
             orient="horizontal",
             length=170,
             showvalue=0,
-            label="Volumen: 0",
+            label="Volumen: 100",
         )
         self.vol_cont.place(x=10, y=60)
 
+        # Boton play / stop
         self.boton_play = Button(
             self.frame1,
-            text="Play/Stop",
+            width = 8,
+            text="Reproducir",
             command=self.play_,
         )
         self.boton_play.place(x=10, y=115)
-
+        # Boton agregar
         self.boton_add = Button(self.frame1, text="Agregar", command=self.add_)
         self.boton_add.place(x=110, y=115)
 
@@ -73,6 +87,7 @@ class Radio(Frame):
         if self.radio_selecionada.get():
             if self.play1:
                 self.play1 = False
+                self.boton_play.config(text="Parar") # Set text boton
                 radio_s = self.radio_selecionada.get()
                 media = self.instance.media_new(radios.radio[radio_s])
                 self.player.set_media(media)
@@ -80,9 +95,10 @@ class Radio(Frame):
             else:
                 self.play1 = True
                 self.player.stop()
+                self.boton_play.config(text="Reproducir") # Set text boton
 
     def add_(self):
-        # Segunda vista
+        # Segunda vista, agregar o modificar radio
         if self.play1:
 
             def obtener(self, *args):
@@ -200,7 +216,8 @@ class Radio(Frame):
         self.vol_cont.config(label="Volumen: " + v_m)
         self.player.audio_set_volume(vol)
 
-    def salir(self):
+    def salir(self, *args):
+        # Que hacer al salir
         if not self.play1:
             self.player.stop()
         self.parent.quit()
@@ -212,3 +229,5 @@ if __name__ == "__main__":
     root = Tk()
     Radio(root)
     root.mainloop()
+
+# final del camino
