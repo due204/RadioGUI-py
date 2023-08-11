@@ -1,3 +1,7 @@
+# Radios de ejemplo, puede ser que algunas ya hayan dejado de funcionar
+# Se guardan primero el nombre, dos puntos (:) y por ultimo el link de la radio
+# Ejemplo:
+# "Nombre de la radio" : "link_de_la_radio"
 radio = {
     "Anime Nexus": "http://radio.animenexus.mx:8000/animenexus",
     "Vale 97.1": "http://vale.stweb.tv:1935/vale/live/playlist.m3u8",
