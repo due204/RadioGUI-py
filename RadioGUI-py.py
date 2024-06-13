@@ -1,4 +1,4 @@
-#!/usr/bin/python3.9
+#!/usr/bin/python3.11
 
 from tkinter import Button
 from tkinter import Tk
@@ -87,7 +87,9 @@ class Radio(Frame):
         if self.radio_selecionada.get():
             if self.play1:
                 self.play1 = False
+                self.boton_add.place_forget() # Oculta el boton de agregar
                 self.boton_play.config(text="Parar") # Set text boton
+                self.boton_play.config(width=19) # Expande el boton de reproducir
                 radio_s = self.radio_selecionada.get()
                 media = self.instance.media_new(radios.radio[radio_s])
                 self.player.set_media(media)
@@ -95,12 +97,13 @@ class Radio(Frame):
             else:
                 self.play1 = True
                 self.player.stop()
+                self.boton_play.config(width=8) # Contrae el boton de parar
                 self.boton_play.config(text="Reproducir") # Set text boton
+                self.boton_add.place(x=110, y=115)
 
     def add_(self):
         # Segunda vista, agregar o modificar radio
         if self.play1:
-
             def obtener(self, *args):
                 try:
                     self.namae = radios.radio[self.nombre.get()]
@@ -121,11 +124,11 @@ class Radio(Frame):
 
             self.r_selecionada = Combobox(
                 self.frame2,
-                width=22,
+                width=21,
                 values=(self.radios_()),
                 textvariable=self.nombre,
             )
-            self.r_selecionada.place(x=0, y=25)
+            self.r_selecionada.place(x=5, y=25)
 
             self.label2 = Label(self.frame2, text="Link de la radio:")
             self.label2.place(x=0, y=50)
@@ -135,7 +138,7 @@ class Radio(Frame):
                 width=22,
                 textvariable=self.link,
             )
-            self.l_selecionada.place(x=0, y=75)
+            self.l_selecionada.place(x=5, y=75)
 
             self.boton_ag = Button(
                 self.frame2,
@@ -229,5 +232,3 @@ if __name__ == "__main__":
     root = Tk()
     Radio(root)
     root.mainloop()
-
-# final del camino
