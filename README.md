@@ -13,4 +13,4 @@ Para obtener los link de las radios utilice el siguiente tutorial que me funcion
 
 
 
-![RadioGUI-py](https://github.com/due204/RadioGUI-py/blob/main/RGP.png)
+![RadioGUI-py](https://raw.githubusercontent.com/due204/RadioGUI-py/main/RadioGUI-py_screenshot.png)
