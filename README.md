@@ -7,10 +7,10 @@ RadioGUI fue una de las aplicaciones que use durante muchas años siendo un fan 
 Escrita en python3 y utilizando de fondo las librerías del fantástico reproductor VLC lo trate de hacer lo mas simple y minimalista posible y creo que 
 llegue al resultado esperado.
 
-Lo único que necesitamos para hacer funcionar correctamente es tener instalado el [VLC](https://www.videolan.org/vlc/index.es.html) en nuestro sistema.
+Lo único que necesitamos para hacerlo funcionar correctamente es tener instalado las librerías de el [VLC](https://pypi.org/project/python-vlc/) en nuestro sistema.
 
 Para obtener los link de las radios utilice el siguiente tutorial que me funciono muy bien, aclaro que no es mio pero fue el que mejor me funciono. [Link al tutorial](https://geekland.eu/obtener-la-url-para-escuchar-radio-en-streaming/)
 
 
 
-![RadioGUI-py](https://raw.githubusercontent.com/due204/RadioGUI-py/main/RadioGUI-py_screenshot.png)
+![RadioGUI-py]([https://raw.githubusercontent.com/due204/RadioGUI-py/main/RadioGUI-py_screenshot.png](https://raw.githubusercontent.com/due204/RadioGUI-py/refs/heads/main/RadioGUIpy.png))
