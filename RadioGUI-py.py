@@ -25,7 +25,7 @@ class Radio(Frame):
         self.icono = ruta_absoluta + "/icono2.png"
         # Cerrar ventana
         self.parent.protocol("WM_DELETE_WINDOW", self.salir)
-        self.instance = vlc.Instance()
+        self.instance = vlc.Instance("--no-video", "--aout=alsa")
         self.player = self.instance.media_player_new()
         # Crear una cola para manejar el cierre
         self.quit_queue = queue.Queue()
